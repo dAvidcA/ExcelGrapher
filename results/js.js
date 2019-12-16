@@ -24,11 +24,12 @@ $(document).ready(function(){
 
 function handleFile(e) {	
 	emptyData();
-	var files = e.target.files;
-	for (var i = 0; i != files.length; i++) {
+	var files = e.target.files;	
+	var i, f;
+	for (i = 0; i != files.length; i++) {
 		f = files[i];
 		var reader = new FileReader();
-		var name = f.name;
+		reader.name = f.name;
 		reader.onload = function (e) {
 			var data = e.target.result;
 			var workbook = XLSX.read(data, { type: 'binary' });			
@@ -38,7 +39,7 @@ function handleFile(e) {
 			var dataFile = XLSX.utils.sheet_to_json(workbook.Sheets[nameSheet]);
 			
 			if (dataFile.length > 0) {
-				renderGraph([{name: name, data: dataFile}]);
+				renderGraph([{name: e.target.name, data: dataFile}]);
 			}
 		};
 		reader.readAsBinaryString(f);

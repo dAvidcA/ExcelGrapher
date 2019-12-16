@@ -24,7 +24,7 @@
 		font-size: 12px;
 		font-weight: normal;
 	}
-	.inputfile:focus + label {
+	.inputfile:focus {
 		outline: 1px dotted #000;
 		outline: -webkit-focus-ring-color auto 5px;
 	}
@@ -33,7 +33,7 @@
 
 <body>
 	<div id="namSheet">Sheet name: <input type="text" id="nameSheet" value="SystemCost"></div>
-	<input type="file" id="files" name="files" multiple/> 
+	<input type="file" id="files" name="files" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" multiple/> 
 	<div id="container" style="widthbarChartData: 75%;">
 		<canvas id="canvas"></canvas>
 	</div>
